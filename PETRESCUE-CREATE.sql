@@ -21,3 +21,48 @@ insert into PETRESCUE values
 	(9,'Dog',2,222.22,'2018-06-15')
 	
 ;
+
+--Query A1: Enter a function that calculates the total cost of all animal rescues in the PETRESCUE table.
+
+SELECT SUM(COST) from PETRESCUE
+;
+
+--Query A2: Enter a function that displays the total cost of all animal rescues in the PETRESCUE table in a column called SUM_OF_COST.
+
+SELECT SUM(COST) as SUM_OF_COST from PETRESCUE
+;
+
+--Query A3: Enter a function that displays the maximum quantity of animals rescued.
+
+SELECT MAX(QUANTITY) from PETRESCUE
+;
+
+--Query A4: Enter a function that displays the average cost of animals rescued.
+
+SELECT AVG(COST) from PETRESCUE
+;
+
+--Query A5: Enter a function that displays the average cost of rescuing a dog.
+
+SELECT AVG(COST/QUANTITY) from PETRESCUE
+where ANIMAL = 'Dog'
+;
+
+--Query C1: Enter a function that displays the day of the month when cats have been rescued.
+
+SELECT DAY(RESCUEDATE) from PETRESCUE
+where ANIMAL='Cat'
+;
+--Query C2: Enter a function that displays the number of rescues on the 5th day of the month.
+
+SELECT COUNT(*) from PETRESCUE
+where DAY(RESCUEDATE)='05'
+;
+
+--Query C3: Animals rescued should see the vet within three days of arrivals. Enter a function that displays the third day from each rescue.
+
+SELECT (RESCUEDATE + 3 DAYS) from PETRESCUE
+;
+--Query C4: Enter a function that displays the length of time the animals have been rescued; the difference between today’s date and the rescue date.
+
+SELECT (CURRENT_DATE - RESCUEDATE) from PETRESCUE
